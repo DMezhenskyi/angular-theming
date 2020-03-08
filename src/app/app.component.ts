@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Renderer2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mat-theming';
+
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
+
+  switchMode(isDarkMode: boolean) {
+    const hostClass = isDarkMode ? 'theme-dark' : 'theme-light';
+    this.renderer.setAttribute(this.document.body, 'class', hostClass);
+  }
 }
