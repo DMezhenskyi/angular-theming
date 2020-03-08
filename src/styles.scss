@@ -25,7 +25,11 @@ $mat-theming-theme-dark: mat-dark-theme($mat-theming-primary, $mat-theming-accen
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: mat-color(map_get($mat-theming-theme, accent), lighter);
+}
 
 .theme-dark {
   @include angular-material-theme($mat-theming-theme-dark);
