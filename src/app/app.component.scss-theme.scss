@@ -7,3 +7,16 @@
     background-color: mat-color($background, background);
   }
 }
+
+@mixin app-root-typography($config) {
+  app-root {
+    h1 {
+      // font-family: mat-font-family($config);
+      // font-size: mat-font-size($config, title);
+      // font-weight: mat-font-weight($config, title);
+      // line-height: mat-line-height($config, title);
+
+      @include mat-typography-level-to-styles($config, title);
+    }
+  }
+}

@@ -7,7 +7,12 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+$custom-typography: mat-typography-config(
+  $font-family: 'Open Sans',
+  $title: mat-typography-level(24px, 32px, bold)
+);
+
+@include mat-core($custom-typography);
 
 @import './app/app.component.scss-theme.scss';
 
@@ -29,6 +34,8 @@ $mat-theming-theme-dark: mat-dark-theme($mat-theming-primary, $mat-theming-accen
 @mixin custom-theme($theme) {
   @include angular-material-theme($theme);
   @include app-root-theme($theme);  
+
+  @include app-root-typography($custom-typography);
 }
 
 html, body { height: 100%; }
