@@ -2,69 +2,26 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-$custom-typography: mat-typography-config(
-  $font-family: 'Open Sans',
-  $title: mat-typography-level(24px, 32px, bold)
-);
+@import './assets/styles/app-color-palette';
+@import './assets/styles/app-theme';
 
-// @include mat-core($custom-typography);
+// Create the theme objects (a Sass map containing all of the palettes).
+$mat-light-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+$mat-dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 
-@include mat-ripple();
-@include cdk-a11y();
-@include cdk-overlay();
-@include cdk-text-field();
-
-@import './app/app.component.scss-theme.scss';
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$mat-theming-primary: mat-palette($mat-indigo);
-$mat-theming-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$mat-theming-warn: mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$mat-theming-theme: mat-light-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
-$mat-theming-theme-dark: mat-dark-theme($mat-theming-primary, $mat-theming-accent, $mat-theming-warn);
-
-/* You can add global styles to this file, and also import other style files */
-
-@mixin custom-theme($theme) {
-  // @include angular-material-theme($theme);
-  @include mat-core-theme($theme);
-  @include mat-card-theme($theme);
-  @include mat-select-theme($theme);
-  @include mat-form-field-theme($theme);
-  @include mat-slide-toggle-theme($theme);
-  @include mat-toolbar-theme($theme);
-
-  @include app-root-theme($theme);  
-}
-
-@include mat-base-typography($custom-typography);
-@include mat-card-typography($custom-typography);
-@include mat-select-typography($custom-typography);
-@include mat-form-field-typography($custom-typography);
-@include mat-slide-toggle-typography($custom-typography);
-@include mat-toolbar-typography($custom-typography);
-@include app-root-typography($custom-typography);
+// Load core styles which independant from theme
+// It should be included once
+@include app-style-core();
 
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .theme-dark {
-  @include custom-theme($mat-theming-theme-dark);
+  @include app-theme($mat-dark-theme);
 }
 .theme-light {
-  @include custom-theme($mat-theming-theme);
+  @include app-theme($mat-light-theme);
 }

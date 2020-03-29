@@ -1,0 +1,28 @@
+// Import here all themes for your custom components
+@import './../../app/app.component.scss-theme';
+
+// configured typography. Do not forget to include your custom typography there
+@import './_app-typography';
+
+@mixin app-style-core() {
+  @include mat-ripple();
+  @include cdk-a11y();
+  @include cdk-overlay();
+  @include cdk-text-field();
+
+  // This mixin comes form _app-typography
+  // It contains already configured typography
+  @include app-typography();
+}
+
+@mixin app-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-card-theme($theme);
+  @include mat-select-theme($theme);
+  @include mat-form-field-theme($theme);
+  @include mat-slide-toggle-theme($theme);
+  @include mat-toolbar-theme($theme);
+
+  // Costom themes for components
+  @include app-root-theme($theme);  
+}
