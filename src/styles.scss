@@ -12,7 +12,12 @@ $custom-typography: mat-typography-config(
   $title: mat-typography-level(24px, 32px, bold)
 );
 
-@include mat-core($custom-typography);
+// @include mat-core($custom-typography);
+
+@include mat-ripple();
+@include cdk-a11y();
+@include cdk-overlay();
+@include cdk-text-field();
 
 @import './app/app.component.scss-theme.scss';
 
@@ -32,11 +37,24 @@ $mat-theming-theme-dark: mat-dark-theme($mat-theming-primary, $mat-theming-accen
 /* You can add global styles to this file, and also import other style files */
 
 @mixin custom-theme($theme) {
-  @include angular-material-theme($theme);
-  @include app-root-theme($theme);  
+  // @include angular-material-theme($theme);
+  @include mat-core-theme($theme);
+  @include mat-card-theme($theme);
+  @include mat-select-theme($theme);
+  @include mat-form-field-theme($theme);
+  @include mat-slide-toggle-theme($theme);
+  @include mat-toolbar-theme($theme);
 
-  @include app-root-typography($custom-typography);
+  @include app-root-theme($theme);  
 }
+
+@include mat-base-typography($custom-typography);
+@include mat-card-typography($custom-typography);
+@include mat-select-typography($custom-typography);
+@include mat-form-field-typography($custom-typography);
+@include mat-slide-toggle-typography($custom-typography);
+@include mat-toolbar-typography($custom-typography);
+@include app-root-typography($custom-typography);
 
 html, body { height: 100%; }
 body {
