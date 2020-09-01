@@ -1,4 +1,7 @@
-<app-navigation (darkModeSwitched)="switchMode($event)"></app-navigation>
+<app-navigation
+  (darkModeSwitched)="switchMode($event)"
+  [isDarkMode]="isDarkMode"
+></app-navigation>
 <main class="content">
   <h1>Component heading</h1>
   <mat-card>
